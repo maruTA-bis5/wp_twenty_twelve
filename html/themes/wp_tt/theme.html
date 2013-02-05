@@ -1,0 +1,152 @@
+<{strip}>
+<{include_php file="file:$xoops_rootpath/themes/$xoops_theme/xugj_assign_wptt.php"}>
+<{/strip}>
+<!DOCTYPE html>
+<html lang="<{$xoops_langcode}>">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title><{$xoops_sitename}> - <{if $xoops_pagetitle}><{$xoops_pagetitle}><{else}><{$xoops_slogan}><{/if}></title>
+<!--[if lt IE 9]>
+<script src="<{$xoops_imageurl}>html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta name="robots" content="<$xoops_meta_robots}>" />
+<meta name="keywords" content="<{$xoops_meta_keywords}>" />
+<meta name="description" content="<{$xoops_meta_description}>" />
+<meta name="rating" content="<{$xoops_meta_rating}>" />
+<meta name="author" content="<{$xoops_meta_author}>" />
+<{if $smarty.server.HTTP_USER_AGENT|regex_replace:'/^.*MSIE\s*([0-9]+).*$/i':'\1' > 7}>
+<meta http-equiv="X=UA=Compatible" content="IE=edge" />
+<{/if}>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel='stylesheet' id='twentytwelve-style-css'  href='<{$xoops_imageurl}>style.css' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentytwelve-ie-css'  href='<{$xoops_imageurl}>ie.css' type='text/css' media='all' />
+<![endif]-->
+<{$xoops_module_header}>
+<{$xoops_block_header}>
+<script type="text/javascript">
+  <{$xoops_js}>
+</script>
+
+</head>
+
+<body class="home blog single-author">
+<div id="page" class="hfeed site">
+  <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+    <h1 class="site-title"><a href="<{$xoops_url}>" title="<{$xoops_sitename}>" rel="home"><{$xoops_sitename}></a></h1>
+    <h2 class="site-description"><{$xoops_slogan}></h2>
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+      <h3 class="menu-toggle">メニュー</h3>
+      <a class="assistive-text" href="#content" title="コンテンツへ移動">コンテンツへ移動</a>
+      <div class="nav-menu"><{$xugj_menu_uls}></div>
+    </nav><!-- #site-navigation -->
+
+      </header><!-- #masthead -->
+
+  <div id="main" class="wrapper">
+  <div id="primary" class="site-content">
+    <div id="content" role="main">
+    
+<{if $xoops_ccblocks}>
+<{foreach item=block from=$xoops_ccblocks}>
+  <{if $block.weight == 0}><{* show only cc & weight 0 *}>
+  <article class="post type-post status-publish format-standard hentry">
+        <header class="entry-header">
+                  <h2 class="entry-title"><{$block.title}></h2>
+        </header><!-- .entry-header -->
+        <div class="entry-content">
+          <{$block.content}>
+        </div><!-- .entry-content -->
+  </article><!-- #post -->
+  <{/if}>
+<{/foreach}>
+<{/if}>
+
+<article id="main-content" class="post type-post status-publish format-standart hentry">
+  <{$xoops_contents}>
+</article>
+
+<{if $xoops_ccblocks}>
+<{foreach item=block from=$xoops_ccblocks}>
+  <{if $block.weight != 0}>
+  <article class="post type-post status-publish format-standard hentry">
+        <header class="entry-header">
+                  <h2 class="entry-title"><{$block.title}></h2>
+        </header><!-- .entry-header -->
+        <div class="entry-content">
+          <{$block.content}>
+        </div><!-- .entry-content -->
+  </article><!-- #post -->
+  <{/if}>
+<{/foreach}>
+<{/if}>
+
+<{if $xoops_clblocks}>
+<{foreach item=block from=$xoops_clblocks}>
+  <article class="post type-post status-publish format-standard hentry">
+        <header class="entry-header">
+                  <h2 class="entry-title"><{$block.title}></h2>
+        </header><!-- .entry-header -->
+        <div class="entry-content">
+          <{$block.content}>
+        </div><!-- .entry-content -->
+  </article><!-- #post -->
+<{/foreach}>
+<{/if}>
+
+<{if $xoops_crblocks}>
+<{foreach item=block from=$xoops_crblocks}>
+  <article class="post type-post status-publish format-standard hentry">
+        <header class="entry-header">
+                  <h2 class="entry-title"><{$block.title}></h2>
+        </header><!-- .entry-header -->
+        <div class="entry-content">
+          <{$block.content}>
+        </div><!-- .entry-content -->
+  </article><!-- #post -->
+<{/foreach}>
+<{/if}>
+
+<{if $xoops_banner != '&nbsp;'}>
+<article class="post type-post status-publish format-standard hentry">
+  <div class="enrty-content">
+    <{$xoops_banner}>
+  </div>
+</article>
+<{/if}>
+
+    </div><!-- #content -->
+  </div><!-- #primary -->
+
+
+      <div id="secondary" class="widget-area" role="complementary">
+      
+      <{if $xoops_showlblock}>
+      <{foreach item=block from=$xoops_lblocks}>
+        <aside class="widget">
+        <h3><{$block.title}></h3><{$block.content}>
+      </aside>
+      <{/foreach}>
+      <{/if}>
+      
+      <{if $xoops_showrblock}>
+      <{foreach item=block from=$xoops_rblocks}>
+        <aside class="widget">
+        <h3><{$block.title}></h3><{$block.content}>
+      </aside>
+      <{/foreach}>
+      <{/if}>
+      </div><!-- #secondary -->
+  </div><!-- #main .wrapper -->
+  <footer id="colophon" role="contentinfo">
+    <div class="site-info">
+      <{$xoops_footer}>
+    </div><!-- .site-info -->
+  </footer><!-- #colophon -->
+</div><!-- #page -->
+</body>
+</html>
